@@ -3,10 +3,11 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoginMenuOpen, setIsLoginMenuOpen] = useState(false); // Added for login dropdown
+  const [isLoginMenuOpen, setIsLoginMenuOpen] = useState(false);
   const location = useLocation();
 
   const menuItems = [
+    { name: 'Home', path: '/home' },
     { name: 'Dashboard', path: '/Dashboard' },
     { name: 'Book Appointment', path: '/Appointment' }, 
     { name: 'My Appointments', path: '/MyAppointment' },
@@ -17,15 +18,15 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const toggleLoginMenu = () => { // Added function for login dropdown
+  const toggleLoginMenu = () => {
     setIsLoginMenuOpen(!isLoginMenuOpen);
   };
 
   const handleItemClick = () => {
-    setIsMenuOpen(false); // Close mobile menu when item is clicked
+    setIsMenuOpen(false);
   };
 
-  const handleLoginClick = () => { // Added function to close login dropdown
+  const handleLoginClick = () => {
     setIsLoginMenuOpen(false);
   };
 
@@ -35,16 +36,10 @@ const Navbar = () => {
 
   return (
     <>
-     
-
       <nav className="navbar">
         <div className="nav-container">
           <Link to="/" className="logo">
             MediQueue
-          </Link>
-
-          <Link to="/" className="index">
-            index
           </Link>
 
           {/* Desktop Menu */}
@@ -53,7 +48,7 @@ const Navbar = () => {
               <li key={item.name} className="nav-item">
                 <Link
                   to={item.path}
-                    className={`nav-link ${isActive(item.path) ? 'active' : ''}`}
+                  className={`nav-link ${isActive(item.path) ? 'active' : ''}`}
                   onClick={handleItemClick}
                 >
                   {item.name}
@@ -62,9 +57,9 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Right side navigation - MODIFIED */}
+          {/* Right side navigation */}
           <div className="nav-right">
-            {/* Login Icon - ADDED */}
+            {/* Login Icon */}
             <div className="login-container">
               <button className="login-icon" onClick={toggleLoginMenu}>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -73,7 +68,7 @@ const Navbar = () => {
                 </svg>
               </button>
               
-              {/* Login Dropdown - ADDED */}
+              {/* Login Dropdown */}
               <div className={`login-dropdown ${isLoginMenuOpen ? 'active' : ''}`}>
                 <Link to="/login" className="login-option" onClick={handleLoginClick}>
                   Login
@@ -115,9 +110,6 @@ const Navbar = () => {
               </Link>
             </div>
           ))}
-          
-          {/* Mobile Login Section - ADDED */}
-        
         </div>
       </nav>
     </>
