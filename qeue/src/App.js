@@ -5,6 +5,9 @@ import Navbar from './componets/Navbar';
 import Appointment from './pages/Appointment';
 import Qeue from './pages/Qeue';
 import MyAppointment from './pages/MyAppointment';
+import Login from './pages/login';
+import index from './pages';
+import Register from './pages/register';    
 import Dashboard from './pages/Dashboard';
 import Footer from './componets/Footer';
 
@@ -18,10 +21,13 @@ function App() {
                 <Navbar />
                 <div>
                     <Routes>
+                        <Route path='/index' element={<index />} />
                         <Route path='/queue' element={<Qeue />} />
                         <Route path='/dashboard' element={<Dashboard />} />
                         <Route path='/myappointment' element={<MyAppointment />} />
                         <Route path='/appointment' element={<Appointment />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/register' element={<Register />} />
                         <Route path='/Footer' element={<Footer />} />
                     </Routes>
                 </div>
