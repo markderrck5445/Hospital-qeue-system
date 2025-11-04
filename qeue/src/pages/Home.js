@@ -1,32 +1,15 @@
 import React from 'react';
-
+import pic2 from '../img/pic2.jpg';
+import pic6 from '../img/pic6.jpg';
+import pic7 from '../img/pic7.jpg';
+import pic10 from '../img/pic10.jpg';
+import pic4 from '../img/pic4.jpg';
+import pic5 from '../img/pic5.jpg';
+import pic3 from '../img/pic3.jpg'; 
+import pic11 from '../img/pic11.jpg'; 
 function Home() {
   return (
     <div className="home-page">
-      {/* Top Header Bar */}
-      {/* <header className="top-header">
-        <div className="container">
-          <div className="header-content">
-            <div className="welcome-text">
-              <p>Welcome to a Professional Health Care</p>
-            </div>
-            
-            <div className="contact-info">
-              <span className="info-item">
-                <i className="fa fa-phone"></i> 010-060-0160
-              </span>
-              <span className="info-item">
-                <i className="fa fa-calendar-plus-o"></i> 6:00 AM - 10:00 PM (Mon-Fri)
-              </span>
-              <span className="info-item">
-                <i className="fa fa-envelope-o"></i> 
-                <a href="mailto:info@company.com">info@company.com</a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </header> */}
-
       {/* Hero Section / Slider */}
       <section id="home" className="hero-slider">
         <div className="container">
@@ -52,7 +35,7 @@ function Home() {
               <p>Sed a dignissim lacus. Quisque fermentum est non orci commodo, a luctus urna mattis. Ut placerat, diam a tempus vehicula.</p>
               
               <div className="profile-card">
-                <img src="images/author-image.jpg" alt="Dr. Neil Jackson" />
+                <img src={pic2}/>
                 <div className="profile-info">
                   <h3>Dr. Neil Jackson</h3>
                   <p>General Principal</p>
@@ -72,7 +55,7 @@ function Home() {
 
           <div className="team-grid">
             <div className="team-card">
-              <img src="images/team-image1.jpg" alt="Nate Baston" />
+               <img src={pic2}/>
               <div className="team-info">
                 <h3>Nate Baston</h3>
                 <p>General Principal</p>
@@ -88,7 +71,7 @@ function Home() {
             </div>
 
             <div className="team-card">
-              <img src="images/team-image2.jpg" alt="Jason Stewart" />
+              <img src={pic6}/>
               <div className="team-info">
                 <h3>Jason Stewart</h3>
                 <p>Pregnancy</p>
@@ -105,7 +88,7 @@ function Home() {
             </div>
 
             <div className="team-card">
-              <img src="images/team-image3.jpg" alt="Miasha Nakahara" />
+               <img src={pic7}/>
               <div className="team-info">
                 <h3>Miasha Nakahara</h3>
                 <p>Cardiology</p>
@@ -133,14 +116,14 @@ function Home() {
           <div className="news-grid">
             <div className="news-card">
               <a href="news-detail.html">
-                <img src="images/news-image1.jpg" alt="News" />
+                <img src={pic10}/>
               </a>
               <div className="news-content">
                 <span className="news-date">March 08, 2018</span>
                 <h3><a href="news-detail.html">About Amazing Technology</a></h3>
                 <p>Maecenas risus neque, placerat volutpat tempor ut, vehicula et felis.</p>
                 <div className="author-info">
-                  <img src="images/author-image.jpg" alt="Author" />
+                   <img src={pic2}/>
                   <div>
                     <h5>Jeremie Carlson</h5>
                     <p>CEO / Founder</p>
@@ -151,14 +134,14 @@ function Home() {
 
             <div className="news-card">
               <a href="news-detail.html">
-                <img src="images/news-image2.jpg" alt="News" />
+                <img src={pic4}/>
               </a>
               <div className="news-content">
                 <span className="news-date">February 20, 2018</span>
                 <h3><a href="news-detail.html">Introducing a new healing process</a></h3>
                 <p>Fusce vel sem finibus, rhoncus massa non, aliquam velit. Nam et est ligula.</p>
                 <div className="author-info">
-                  <img src="images/author-image.jpg" alt="Author" />
+                  <img src={pic11}/>
                   <div>
                     <h5>Jason Stewart</h5>
                     <p>General Director</p>
@@ -169,14 +152,14 @@ function Home() {
 
             <div className="news-card">
               <a href="news-detail.html">
-                <img src="images/news-image3.jpg" alt="News" />
+                 <img src={pic5}/>
               </a>
               <div className="news-content">
                 <span className="news-date">January 27, 2018</span>
                 <h3><a href="news-detail.html">Review Annual Medical Research</a></h3>
                 <p>Vivamus non nulla semper diam cursus maximus. Pellentesque dignissim.</p>
                 <div className="author-info">
-                  <img src="images/author-image.jpg" alt="Author" />
+                      <img src={pic3}/>
                   <div>
                     <h5>Andrio Abero</h5>
                     <p>Online Advertising</p>
@@ -193,7 +176,7 @@ function Home() {
         <div className="container">
           <div className="appointment-content">
             <div className="appointment-image">
-              <img src="images/appointment-image.jpg" alt="Appointment" />
+              <img src={pic2}/>
             </div>
 
             <div className="appointment-form">
