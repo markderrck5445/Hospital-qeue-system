@@ -34,6 +34,9 @@ const Navbar = () => {
     return location.pathname === path;
   };
 
+  // Check if current path is home/landing page
+  const isHomePage = location.pathname === '/' || location.pathname === '/home';
+
   return (
     <>
       <nav className="navbar">
@@ -42,20 +45,22 @@ const Navbar = () => {
             MediQueue
           </Link>
 
-          {/* Desktop Menu */}
-          <ul className="nav-menu">
-            {menuItems.map((item) => (
-              <li key={item.name} className="nav-item">
-                <Link
-                  to={item.path}
-                  className={`nav-link ${isActive(item.path) ? 'active' : ''}`}
-                  onClick={handleItemClick}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          {/* Desktop Menu - Only show if NOT on home page */}
+          {!isHomePage && (
+            <ul className="nav-menu">
+              {menuItems.map((item) => (
+                <li key={item.name} className="nav-item">
+                  <Link
+                    to={item.path}
+                    className={`nav-link ${isActive(item.path) ? 'active' : ''}`}
+                    onClick={handleItemClick}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
 
           {/* Right side navigation */}
           <div className="nav-right">
@@ -79,38 +84,44 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Hamburger Menu */}
-            <div 
-              className={`hamburger ${isMenuOpen ? 'active' : ''}`}
-              onClick={toggleMenu}
-            >
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+            {/* Hamburger Menu - Only show if NOT on home page */}
+            {!isHomePage && (
+              <div 
+                className={`hamburger ${isMenuOpen ? 'active' : ''}`}
+                onClick={toggleMenu}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
-        <div 
-          className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`}
-          onClick={() => setIsMenuOpen(false)}
-        />
+        {/* Mobile Menu Overlay - Only show if NOT on home page */}
+        {!isHomePage && (
+          <>
+            <div 
+              className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`}
+              onClick={() => setIsMenuOpen(false)}
+            />
 
-        {/* Mobile Menu */}
-        <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}>
-          {menuItems.map((item) => (
-            <div key={item.name} className="mobile-nav-item">
-              <Link
-                to={item.path}
-                className={`mobile-nav-link ${isActive(item.path) ? 'active' : ''}`}
-                onClick={handleItemClick}
-              >
-                {item.name}
-              </Link>
+            {/* Mobile Menu */}
+            <div className={`mobile-menu ${isMenuOpen ? 'active' : ''}`}>
+              {menuItems.map((item) => (
+                <div key={item.name} className="mobile-nav-item">
+                  <Link
+                    to={item.path}
+                    className={`mobile-nav-link ${isActive(item.path) ? 'active' : ''}`}
+                    onClick={handleItemClick}
+                  >
+                    {item.name}
+                  </Link>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </>
+        )}
       </nav>
     </>
   );
