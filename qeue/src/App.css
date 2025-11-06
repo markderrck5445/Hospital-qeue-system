@@ -1,5 +1,9 @@
- 
- .navbar {
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+  .navbar {
           background: #ffffff;
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
           position: sticky;
@@ -863,13 +867,7 @@
     /* Hospital Management System Dashboard CSS */
 /* This file includes all necessary styles for the dashboard */
 
-/* Tailwind directives (processed by PostCSS + tailwindcss). 
-   If you use Tailwind, ensure this file is run through PostCSS with the tailwindcss plugin; 
-   otherwise include the compiled Tailwind CSS (via CDN or a precompiled file). 
-   Commented out to avoid "Unknown at rule @tailwind" in environments that don't run PostCSS. */
-/* @tailwind base; */
-/* @tailwind components; */
-/* @tailwind utilities; */
+/* Base Tailwind directives - Required for Tailwind CSS */
 
 /* Custom CSS Variables for theming */
 :root {
@@ -1312,7 +1310,9 @@ a:focus-visible {
   .metric-card {
     break-inside: avoid;
   }
-}    
+}  
+
+
 
 
 

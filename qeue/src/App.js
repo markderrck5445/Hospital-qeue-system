@@ -6,7 +6,6 @@ import Appointment from './pages/Appointment';
 import Qeue from './pages/Qeue';
 import MyAppointment from './pages/MyAppointment';
 import Login from './pages/login';
-import index from './pages/Home';
 import Register from './pages/register';    
 import Dashboard from './pages/Dashboard';
 import Footer from './componets/Footer';
@@ -22,7 +21,7 @@ function App() {
                 <Navbar />
                 <div>
                     <Routes>
-                        <Route path='/home' element={<Home />} />
+                        <Route path='/' element={<Home />} />
                         <Route path='/queue' element={<Qeue />} />
                         <Route path='/dashboard' element={<Dashboard />} />
                         <Route path='/myappointment' element={<MyAppointment />} />
