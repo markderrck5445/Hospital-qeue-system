@@ -1,3 +1,4 @@
+// Dashboard.jsx
 import React, { useState, useEffect } from 'react';
 import {
   Calendar,
@@ -32,7 +33,7 @@ import {
   ResponsiveContainer
 } from 'recharts';
 
-const Dashboard = () => {
+export default function Dashboard({ onLogout }) {
   const [activeTab, setActiveTab] = useState('overview');
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
@@ -572,93 +573,105 @@ const Dashboard = () => {
     }
   };
 
-    return (
-      <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
-        <nav className={`fixed top-0 left-0 right-0 z-50 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b shadow-sm`}>
-          <div className="flex items-center justify-between px-4 py-3">
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="p-2 rounded-lg hover:bg-opacity-80 transition-colors"
-              >
-                {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-              <div className="flex items-center gap-2">
-                <Activity className="text-blue-500" size={32} />
-                <span className="text-xl font-bold hidden sm:block">MediCare Portal</span>
-              </div>
-            </div>
-  
-            <div className="flex-1 max-w-xl mx-4 hidden md:block">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="text"
-                  placeholder="Search appointments, prescriptions..."
-                  className={`w-full pl-10 pr-4 py-2 rounded-lg border ${darkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-200 text-gray-900'} focus:outline-none`}
-                />
-              </div>
-            </div>
-  
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                aria-label="Toggle theme"
-              >
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-              <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" aria-label="Notifications">
-                <Bell size={20} />
-              </button>
-              <div className="relative">
-                <button
-                  onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-                >
-                  <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-bold">
-                    {patientInfo.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <ChevronDown size={16} />
-                </button>
-                {userMenuOpen && (
-                  <div className={`absolute right-0 mt-2 w-48 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}>
-                    <button className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2">
-                      <LogOut size={16} /> Logout
-                    </button>
-                  </div>
-                )}
-              </div>
+  return (
+    <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-b shadow-sm`}>
+        <div className="flex items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className="p-2 rounded-lg hover:bg-opacity-80 transition-colors"
+            >
+              {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+            <div className="flex items-center gap-2">
+              <Activity className="text-blue-500" size={32} />
+              <span className="text-xl font-bold hidden sm:block">MediCare Portal</span>
             </div>
           </div>
-        </nav>
-  
-        <main className="pt-20 px-4 pb-8 max-w-7xl mx-auto">
-          <div className="flex gap-6">
-            {sidebarOpen && (
-              <aside className={`w-64 hidden lg:block ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-xl border p-4`}>
-                <nav className="space-y-2">
-                  {menuItems.map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => setActiveTab(item.id)}
-                      className={`w-full text-left flex items-center gap-3 px-3 py-2 rounded-md ${activeTab === item.id ? 'bg-blue-50 dark:bg-blue-900' : ''}`}
-                    >
-                      <item.icon size={18} />
-                      <span className="font-medium">{item.label}</span>
-                    </button>
-                  ))}
-                </nav>
-              </aside>
-            )}
-  
-            <section className="flex-1">
-              {renderContent()}
-            </section>
+
+          <div className="flex-1 max-w-xl mx-4 hidden md:block">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <input
+                type="text"
+                placeholder="Search appointments, prescriptions..."
+                className={`w-full pl-10 pr-4 py-2 rounded-lg border ${darkMode ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white border-gray-200 text-gray-900'} focus:outline-none`}
+              />
+            </div>
           </div>
-        </main>
-      </div>
-    );
-  };
-  
-  export default Dashboard;
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" aria-label="Notifications">
+              <Bell size={20} />
+            </button>
+            <div className="relative">
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              >
+                <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-bold">
+                  {patientInfo.name.split(' ').map(n => n[0]).join('')}
+                </div>
+                <ChevronDown size={16} />
+              </button>
+              {userMenuOpen && (
+                <div className={`absolute right-0 mt-2 w-48 rounded-lg shadow-lg ${darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}>
+                  <button 
+                    onClick={() => {
+                      setUserMenuOpen(false);
+                      if (onLogout) {
+                        onLogout();
+                      }
+                    }}
+                    className="w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2"
+                  >
+                    <LogOut size={16} /> Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <main className="pt-20 px-4 pb-8 max-w-7xl mx-auto">
+        <div className="flex gap-6">
+          {sidebarOpen && (
+            <aside className={`w-64 hidden lg:block ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} rounded-xl border p-4`}>
+              <nav className="space-y-2">
+                {menuItems.map((item) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setActiveTab(item.id)}
+                    className={`w-full text-left flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
+                      activeTab === item.id 
+                        ? 'bg-blue-500 text-white' 
+                        : darkMode 
+                        ? 'hover:bg-gray-700' 
+                        : 'hover:bg-gray-100'
+                    }`}
+                  >
+                    <item.icon size={18} />
+                    <span className="font-medium">{item.label}</span>
+                  </button>
+                ))}
+              </nav>
+            </aside>
+          )}
+
+          <section className="flex-1">
+            {renderContent()}
+          </section>
+        </div>
+      </main>
+    </div>
+  );
+}

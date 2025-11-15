@@ -6,6 +6,12 @@ const Navbar = () => {
   const [isLoginMenuOpen, setIsLoginMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Hide navbar on login and register pages
+  const hideOnRoutes = ['/login', '/register'];
+  if (hideOnRoutes.includes(location.pathname)) {
+    return null;
+  }
+
   const menuItems = [
     { name: 'Home', path: '/home' },
     { name: 'Dashboard', path: '/Dashboard' },
